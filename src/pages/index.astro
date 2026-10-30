@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const wa = (t: string) => `https://wa.me/593960111702?text=${encodeURIComponent(t)}`;
+const WA_AUDIT = wa('Hola Smart K Systems, quiero solicitar una auditoría gratuita de mi negocio.');
+const WA_ADVICE = wa('Hola Smart K Systems, me podría ayudar con información sobre');
+
+const nav = [['Inicio', '#inicio'], ['Servicios', '#servicios'], ['Soluciones', '#soluciones'], ['Portafolio', '#portafolio'], ['Sobre nosotros', '#nosotros'], ['Contacto', '#contacto']];
+const tags = ['Diseño Web', 'Marketing Digital', 'Automatización', 'IA'];
+const benefits = ['Alcance ilimitado', 'Flexibilidad en métodos de pago', 'Identidad corporativa', 'Interacción con clientes potenciales', 'Métricas de estrategias comerciales', 'Incremento de cartera de clientes'];
+const services = [
+  { t: 'Identidad Corporativa Digital', d: 'Somos especialistas en el diseño de páginas web a medida, con ideas creativo-innovadoras manteniendo la vanguardia, para garantizar la mejor experiencia de usuario al visitar su negocio en línea.' },
+  { t: 'Marketing Digital', d: 'Trabajamos con herramientas y estrategias que permitirán posicionar su negocio por sobre la competencia, con estrategias y herramientas vanguardistas; perfeccionando la identidad corporativa y profesional.' },
+];
+const skills = [
+  { t: 'Diseño', d: 'Sus proyectos contarán con los estilos más vanguardistas, para llamar la atención de sus nuevos clientes.' },
+  { t: 'Producción de contenido', d: 'Nuestro equipo se capacita constantemente para generar contenido que provoque alto impacto a las personas que visiten sus redes y sitio web.' },
+  { t: 'Soporte', d: 'Usted estará respaldado por el soporte SKS, el cual siempre estará presto para atender sus solicitudes y solventar sus requerimientos a la brevedad posible.' },
+];
+const clients = [['Yan Calefones', 'http://yancalefones.com'], ['Aster Ecuador', 'http://asterecuador.com'], ['Galería Moncayo', 'http://galeriamoncayo.com'], ['Tecnocostex', 'http://tecnocostex.com'], ['Centro CEREIN', 'http://centrocerein.com']];
+const btn = 'inline-flex items-center justify-center rounded-lg px-6 py-3.5 font-bold transition-colors';
+---
+<Layout>
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-ink/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3">
+      <a href="#inicio" class="font-display text-lg font-bold text-white">SMART K <span class="text-sky">SYSTEMS</span></a>
+      <nav aria-label="Principal" class="hidden items-center gap-7 text-sm text-slate-200 lg:flex">
+        {nav.map(([l, h]) => <a href={h} class="hover:text-white">{l}</a>)}
+        <a href={WA_AUDIT} class="rounded-lg bg-cta px-4 py-2.5 font-bold text-ink hover:bg-white">Solicitar auditoría gratuita</a>
+      </nav>
+      <details class="relative lg:hidden">
+        <summary class="cursor-pointer list-none rounded-lg border border-white/30 px-4 py-2 text-sm font-semibold text-white">Menú</summary>
+        <div class="absolute right-0 mt-2 flex w-64 flex-col gap-1 rounded-xl bg-navy p-3 text-white shadow-xl">
+          {nav.map(([l, h]) => <a href={h} class="rounded px-3 py-2 hover:bg-white/10">{l}</a>)}
+          <a href={WA_AUDIT} class="mt-1 rounded-lg bg-cta px-3 py-3 text-center font-bold text-ink">Solicitar auditoría gratuita</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section id="inicio" class="grid-bg bg-ink text-white">
+      <div class="mx-auto max-w-5xl px-5 py-20 sm:py-28">
+        <h1 class="max-w-4xl text-4xl font-bold leading-[1.08] sm:text-6xl">Sistemas digitales inteligentes para impulsar el crecimiento de tu negocio.</h1>
+        <p class="mt-6 max-w-2xl text-lg text-slate-300">Implementamos estrategias digitales inteligentes que ayudan a los negocios a atraer clientes, automatizar procesos y crecer con tecnología.</p>
+        <ul class="mt-8 flex flex-wrap gap-2">
+          {tags.map((t) => <li class="rounded-full border border-sky/40 bg-sky/10 px-4 py-1.5 text-sm font-medium text-sky">{t}</li>)}
+        </ul>
+        <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+          <a href={WA_ADVICE} class={`${btn} bg-cta text-ink hover:bg-white`}>SOLICITAR ASESORÍA GRATUITA ➤</a>
+          <a href="#soluciones" class={`${btn} border border-white/40 text-white hover:bg-white/10`}>VER SOLUCIONES</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="bg-paper py-20">
+      <div class="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-5">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-bold sm:text-4xl">El mundo ha avanzado, y con ello la forma de llegar a sus clientes.</h2>
+          <p class="mt-5 text-slate-600">Posicionar su negocio en internet le permite llegar a más clientes, estar disponible las 24 horas los 7 días de la semana e incrementar sus ventas; sin invertir mucho dinero ni tiempo.</p>
+          <a href={wa('Hola Smart K Systems, quisiera asesoría sobre marketing digital para mi negocio de')} class={`${btn} mt-7 bg-brand text-white hover:bg-navy`}>Asesoría gratuita</a>
+        </div>
+        <div class="lg:col-span-3">
+          <h3 class="text-xl font-bold">Las redes proporcionan:</h3>
+          <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+            {benefits.map((b) => <li class="border-l-4 border-brand bg-white px-4 py-4 font-semibold">{b}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones" class="py-20">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 class="text-3xl font-bold sm:text-4xl">Servicios y soluciones</h2>
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          {services.map((s) => (
+            <article class="rounded-2xl bg-navy p-8 text-white">
+              <h3 class="text-2xl font-bold">{s.t}</h3>
+              <p class="mt-4 text-slate-300">{s.d}</p>
+              <a href={wa(`Hola Smart K Systems, me interesa ${s.t}.`)} class="mt-6 inline-block font-bold text-cta underline underline-offset-4 hover:text-white">Cotizar este servicio</a>
+            </article>
+          ))}
+        </div>
+        <div class="mt-14 grid gap-8 md:grid-cols-3">
+          {skills.map((s) => (
+            <div class="border-t-4 border-cta pt-5">
+              <h3 class="text-lg font-bold">{s.t}</h3>
+              <p class="mt-2 text-slate-600">{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="portafolio" class="bg-paper py-20">
+      <div class="mx-auto max-w-6xl px-5">
+        <h2 class="text-3xl font-bold sm:text-4xl">Equipos que ya construyen con nosotros</h2>
+        <p class="mt-3 text-slate-600">Nuestros clientes</p>
+        <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {clients.map(([n, u]) => <li><a href={u} rel="noopener" target="_blank" class="flex h-24 items-center justify-center rounded-xl border border-slate-200 bg-white px-3 text-center font-display font-semibold hover:border-brand hover:text-brand">{n}</a></li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section id="nosotros" class="py-20">
+      <div class="mx-auto max-w-3xl px-5">
+        <h2 class="text-3xl font-bold sm:text-4xl">Sobre nosotros</h2>
+        <p class="mt-5 text-lg text-slate-600">En SMART K SYSTEMS (Agencia SKS) combinamos diseño, contenido y tecnología para que su negocio venda más en internet, con soporte cercano y respuesta rápida.</p>
+        <p class="mt-4"><a class="font-bold text-brand underline underline-offset-4" href="https://agenciasks.com/sobre-nosotros/trabaja-con-nosotros/">Trabaja con nosotros</a></p>
+      </div>
+    </section>
+
+    <section id="contacto" class="bg-ink py-20 text-white">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
+        <div>
+          <h2 class="text-3xl font-bold sm:text-4xl">Solicite su auditoría gratuita</h2>
+          <p class="mt-4 text-slate-300">Cuéntenos de su negocio y le respondemos con un diagnóstico y los siguientes pasos.</p>
+          <dl class="mt-8 space-y-5">
+            <div><dt class="text-sm text-sky">Correo</dt><dd><a class="text-lg font-semibold hover:text-cta" href="mailto:ventas@agenciasks.com">ventas@agenciasks.com</a></dd></div>
+            <div><dt class="text-sm text-sky">WhatsApp</dt><dd><a class="text-lg font-semibold hover:text-cta" href={WA_ADVICE}>0960 111 702</a></dd></div>
+            <div><dt class="text-sm text-sky">Horarios</dt><dd>Lunes, martes, jueves y viernes, 8:00 a 13:00<br />Miércoles, sábado y domingo: cerrado</dd></div>
+            <div><dt class="text-sm text-sky">Redes</dt><dd class="flex flex-wrap gap-x-5">
+              <a class="hover:text-cta" href="https://www.facebook.com/smartksystems/">Facebook @smartksystems</a>
+              <a class="hover:text-cta" href="https://www.instagram.com/sks.agencia/">Instagram @sks.agencia</a>
+              <a class="hover:text-cta" href="https://www.linkedin.com/company/sks-agency/">LinkedIn</a></dd></div>
+          </dl>
+        </div>
+        <form id="lead" class="space-y-4 rounded-2xl bg-white p-6 text-ink">
+          {[['nombre', 'Nombre', 'text'], ['correo', 'Correo electrónico', 'email'], ['asunto', 'Asunto', 'text']].map(([id, l, t]) => (
+            <label class="block text-sm font-semibold">{l}<input required name={id} type={t} class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-3 font-normal" /></label>
+          ))}
+          <label class="block text-sm font-semibold">Mensaje<textarea required name="mensaje" rows="4" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-3 font-normal"></textarea></label>
+          <button class={`${btn} w-full bg-cta text-ink hover:bg-brand hover:text-white`} type="submit">Enviar y solicitar auditoría</button>
+          <p class="text-xs text-slate-500">Se abrirá WhatsApp con su mensaje listo para enviar.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink py-8 text-center text-sm text-slate-400">
+    <p>2016 | Agencia SKS · SMART K SYSTEMS</p>
+  </footer>
+
+  <a href={WA_ADVICE} aria-label="Escríbenos por WhatsApp" class="fixed bottom-5 right-5 z-40 rounded-full bg-[#25d366] px-5 py-3 text-sm font-bold text-ink shadow-lg">WhatsApp</a>
+
+  <script>
+    const f = document.getElementById('lead') as HTMLFormElement | null;
+    f?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const d = new FormData(f);
+      const t = `Hola Smart K Systems, soy ${d.get('nombre')} (${d.get('correo')}). Asunto: ${d.get('asunto')}. ${d.get('mensaje')}`;
+      window.open(`https://wa.me/593960111702?text=${encodeURIComponent(t)}`, '_blank', 'noopener');
+    });
+  </script>
+</Layout>
