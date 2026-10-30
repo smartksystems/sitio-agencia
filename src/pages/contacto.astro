@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { SITE, WA, HOURS } from '../config/site';
+---
+<Layout
+  title="Contacto y auditoría gratuita | SMART K SYSTEMS"
+  description="Escríbenos a ventas@agenciasks.com o al 0960 111 702 y solicita tu auditoría gratuita. Atendemos de lunes a viernes por la mañana."
+>
+  <PageHeader title="Contacto" lead="Contacta con nosotros y solicita tu asesoría gratuita." />
+  <section class="py-20">
+    <div class="container-x grid gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-bold">Contacto directo</h2>
+        <p class="mt-4"><a class="text-lg font-semibold text-brand hover:underline" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p class="mt-2"><a class="text-lg font-semibold text-brand hover:underline" href={WA.advice}>{SITE.phoneDisplay}</a></p>
+        <h2 class="mt-10 text-2xl font-bold">Horarios</h2>
+        <ul class="mt-4 space-y-3">{HOURS.map((h) => <li>{h.days}<br /><strong>{h.time}</strong></li>)}</ul>
+        <h2 class="mt-10 text-2xl font-bold">Nuestras redes</h2>
+        <ul class="mt-4 space-y-2">{SITE.social.map((s) => <li><a class="font-semibold text-brand hover:underline" rel="noopener" href={s.url}>{s.name}: {s.handle}</a></li>)}</ul>
+      </div>
+      <div>
+        <h2 class="mb-4 text-2xl font-bold">Escríbanos</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+</Layout>

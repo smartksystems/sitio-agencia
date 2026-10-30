@@ -1,0 +1,41 @@
+---
+import { SITE, NAV, WA } from '../config/site';
+const path = Astro.url.pathname;
+const isActive = (item: (typeof NAV)[number]) => {
+  const roots = [item.href, ...(item.children?.map((c) => c.href) ?? [])];
+  return item.href === '/' ? path === '/' : roots.some((r) => path.startsWith(r.replace(/[^/]+\/$/, '')) && r !== '/');
+};
+---
+<header class="sticky top-0 z-40 border-b border-white/10 bg-ink/95 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3">
+    <a href="/" class="flex items-center gap-3 font-display text-lg font-bold text-white">
+      <img src={SITE.logo} alt={`Logotipo de ${SITE.name}`} width="40" height="40" class="h-10 w-10 rounded-md" />
+      <span>SMART K <span class="text-sky">SYSTEMS</span></span>
+    </a>
+    <nav aria-label="Principal" class="hidden items-center gap-7 text-sm text-slate-200 lg:flex">
+      {NAV.map((item) => (
+        <div class="group relative">
+          <a href={item.href} aria-current={isActive(item) ? 'page' : undefined} class="py-2 hover:text-white aria-[current=page]:font-semibold aria-[current=page]:text-white">{item.label}</a>
+          {item.children && (
+            <ul class="invisible absolute left-0 top-full min-w-52 rounded-lg bg-navy p-2 opacity-0 shadow-xl group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+              {item.children.map((c) => <li><a href={c.href} class="block rounded px-3 py-2 hover:bg-white/10">{c.label}</a></li>)}
+            </ul>
+          )}
+        </div>
+      ))}
+      <a href={WA.audit} class="rounded-lg bg-cta px-4 py-2.5 font-bold text-ink hover:bg-white">Solicitar auditoría gratuita</a>
+    </nav>
+    <details class="relative lg:hidden">
+      <summary class="cursor-pointer list-none rounded-lg border border-white/30 px-4 py-2 text-sm font-semibold text-white">Menú</summary>
+      <nav aria-label="Móvil" class="absolute right-0 mt-2 flex w-72 flex-col gap-1 rounded-xl bg-navy p-3 text-white shadow-xl">
+        {NAV.map((item) => (
+          <>
+            <a href={item.href} class="rounded px-3 py-2 hover:bg-white/10">{item.label}</a>
+            {item.children?.map((c) => <a href={c.href} class="rounded py-2 pl-7 pr-3 text-sm text-slate-300 hover:bg-white/10">{c.label}</a>)}
+          </>
+        ))}
+        <a href={WA.audit} class="mt-1 rounded-lg bg-cta px-3 py-3 text-center font-bold text-ink">Solicitar auditoría gratuita</a>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE, HOURS } from '../config/site';
+import { SKILLS } from '../data/content';
+---
+<Layout
+  title="Sobre nosotros: Agencia SKS desde 2016 | SMART K SYSTEMS"
+  description="Somos Agencia SKS (SMART K SYSTEMS): diseño, producción de contenido y soporte para negocios que quieren crecer con tecnología. Conoce nuestras destrezas y horarios."
+>
+  <PageHeader title="Sobre nosotros" lead="Sistemas digitales inteligentes para hacer crecer tu negocio." />
+  <section class="py-20">
+    <div class="container-x">
+      <h2 class="text-3xl font-bold">Destrezas</h2>
+      <div class="mt-8 grid gap-8 md:grid-cols-3">
+        {SKILLS.map((s) => <div class="border-t-4 border-cta pt-5"><h3 class="text-lg font-bold">{s.title}</h3><p class="mt-2 text-slate-600">{s.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+  <section class="bg-paper py-16">
+    <div class="container-x grid gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-bold">Horarios</h2>
+        <ul class="mt-4 space-y-3">{HOURS.map((h) => <li>{h.days}<br /><strong>{h.time}</strong></li>)}</ul>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold">Trabaja con nosotros</h2>
+        <p class="mt-4 text-slate-600">Conoce cómo sumarte al equipo de {SITE.short}.</p>
+        <a href="/sobre-nosotros/trabaja-con-nosotros/" class="btn-brand mt-5">Trabaja con nosotros</a>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Layout>

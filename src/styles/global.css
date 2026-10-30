@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #07152f;
+  --color-navy: #0b2447;
+  --color-brand: #1d4ed8;
+  --color-sky: #38bdf8;
+  --color-cta: #ff7a1a;
+  --color-paper: #f5f8fc;
+  --font-display: "Sora Variable", system-ui, sans-serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); color: var(--color-ink); }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; text-wrap: balance; }
+  :focus-visible { outline: 3px solid var(--color-cta); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center rounded-lg px-6 py-3.5 font-bold transition-colors;
+}
+@utility btn-cta {
+  @apply inline-flex items-center justify-center rounded-lg bg-cta px-6 py-3.5 font-bold text-ink transition-colors hover:bg-white;
+}
+@utility btn-brand {
+  @apply inline-flex items-center justify-center rounded-lg bg-brand px-6 py-3.5 font-bold text-white transition-colors hover:bg-navy;
+}
+@utility btn-ghost {
+  @apply inline-flex items-center justify-center rounded-lg border border-white/40 px-6 py-3.5 font-bold text-white transition-colors hover:bg-white/10;
+}
+@utility container-x {
+  @apply mx-auto max-w-6xl px-5;
+}
+@utility grid-bg {
+  background-image: linear-gradient(rgba(56,189,248,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+}

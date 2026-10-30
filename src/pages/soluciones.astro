@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { WA } from '../config/site';
+import { TAGS, BENEFITS } from '../data/content';
+---
+<Layout
+  title="Soluciones digitales para negocios: web, marketing e IA | SMART K SYSTEMS"
+  description="Diseño web, marketing digital, automatización e inteligencia artificial para negocios. Llega a más clientes las 24 horas, los 7 días, sin invertir mucho dinero ni tiempo."
+>
+  <PageHeader title="Soluciones digitales para tu negocio">
+    <ul class="mt-8 flex flex-wrap gap-2">
+      {TAGS.map((t) => <li class="rounded-full border border-sky/40 bg-sky/10 px-4 py-1.5 text-sm font-medium text-sky">{t}</li>)}
+    </ul>
+  </PageHeader>
+  <section class="py-20">
+    <div class="container-x grid items-start gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="text-3xl font-bold sm:text-4xl">El mundo ha avanzado, y con ello la forma de llegar a sus clientes.</h2>
+        <p class="mt-5 text-slate-600">Posicionar su negocio en internet, le permite llegar a más clientes, estar disponible las 24 horas los 7 días de la semana e incrementar sus ventas; sin invertir mucho dinero ni tiempo.</p>
+        <a href={WA.marketing} class="btn-brand mt-7">Asesoría Gratuita</a>
+        <img src="/images/redes-sociales.jpg" alt="Redes sociales y herramientas digitales para impulsar las ventas de un negocio" width="1024" height="683" loading="lazy" decoding="async" class="mt-8 h-auto w-full rounded-2xl" />
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold">Las redes proporcionan:</h2>
+        <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+          {BENEFITS.map((b) => <li class="border-l-4 border-brand bg-paper px-4 py-4 font-semibold">{b}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Layout>

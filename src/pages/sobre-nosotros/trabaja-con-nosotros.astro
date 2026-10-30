@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { SITE, WA } from '../../config/site';
+---
+<Layout
+  title="Trabaja con nosotros | SMART K SYSTEMS"
+  description="Únete a Agencia SKS. Escríbenos a ventas@agenciasks.com o por WhatsApp para conocer cómo sumarte a nuestro equipo."
+>
+  <PageHeader title="Trabaja con nosotros" lead="Escríbanos y conozca cómo sumarse al equipo de Agencia SKS." />
+  <section class="py-20">
+    <div class="container-x flex flex-col gap-4 sm:flex-row">
+      <a href={`mailto:${SITE.email}?subject=Trabaja%20con%20nosotros`} class="btn-brand">{SITE.email}</a>
+      <a href={WA.advice} class="btn-cta">WhatsApp {SITE.phoneDisplay}</a>
+    </div>
+  </section>
+</Layout>

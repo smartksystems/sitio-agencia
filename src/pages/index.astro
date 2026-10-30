@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ClientGrid from '../components/ClientGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { WA } from '../config/site';
+import { TAGS, SERVICES, SKILLS } from '../data/content';
+---
+<Layout
+  title="SMART K SYSTEMS | Sistemas digitales inteligentes para hacer crecer tu negocio"
+  description="Diseño web, marketing digital, automatización e inteligencia artificial para negocios. Atrae clientes y crece con tecnología. Solicita tu asesoría gratuita con Agencia SKS."
+>
+  <section class="grid-bg bg-ink text-white">
+    <div class="mx-auto max-w-5xl px-5 py-20 sm:py-28">
+      <h1 class="max-w-4xl text-4xl font-bold leading-[1.08] sm:text-6xl">Sistemas digitales inteligentes para impulsar el crecimiento de tu negocio.</h1>
+      <p class="mt-6 max-w-2xl text-lg text-slate-300">Implementamos estrategias digitales inteligentes que ayudan a los negocios a atraer clientes, automatizar procesos y crecer con tecnología.</p>
+      <ul class="mt-8 flex flex-wrap gap-2">
+        {TAGS.map((t) => <li class="rounded-full border border-sky/40 bg-sky/10 px-4 py-1.5 text-sm font-medium text-sky">{t}</li>)}
+      </ul>
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+        <a href={WA.advice} class="btn-cta">SOLICITAR ASESORÍA GRATUITA ➤</a>
+        <a href="/soluciones/" class="btn-ghost">VER SOLUCIONES</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container-x">
+      <h2 class="text-3xl font-bold sm:text-4xl">Servicios y Soluciones</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {SERVICES.map((s) => (
+          <article class="rounded-2xl bg-paper p-8">
+            <img src={s.img} alt={s.alt} width="96" height="96" loading="lazy" class="h-16 w-16" />
+            <h3 class="mt-5 text-2xl font-bold">{s.title}</h3>
+            <p class="mt-3 text-slate-600">{s.text}</p>
+            <a href="/servicios/" class="mt-5 inline-block font-bold text-brand underline underline-offset-4 hover:text-navy">Ver servicios</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper py-20">
+    <div class="container-x">
+      <h2 class="text-3xl font-bold sm:text-4xl">Destrezas</h2>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        {SKILLS.map((s) => (
+          <div class="border-t-4 border-cta pt-5"><h3 class="text-lg font-bold">{s.title}</h3><p class="mt-2 text-slate-600">{s.text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container-x">
+      <h2 class="text-3xl font-bold sm:text-4xl">Equipos que ya construyen con nosotros</h2>
+      <p class="mb-8 mt-3 text-slate-600">Nuestros clientes</p>
+      <ClientGrid />
+    </div>
+  </section>
+  <CtaBand />
+</Layout>

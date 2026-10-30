@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { BANNERS } from '../../data/content';
+---
+<Layout
+  title="Portafolio de banners y artes digitales | SMART K SYSTEMS"
+  description="Galería de banners y artes digitales diseñados por Agencia SKS para redes sociales y sitios web de nuestros clientes."
+>
+  <PageHeader title="Portafolio Banners" />
+  <section class="py-20">
+    <div class="container-x">
+      {BANNERS.length > 0 ? (
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {BANNERS.map((b) => <li><img src={b.src} alt={b.alt} width={b.width} height={b.height} loading="lazy" decoding="async" class="h-auto w-full rounded-xl" /></li>)}
+        </ul>
+      ) : (
+        <p class="text-slate-600">Estamos preparando esta galería. Agrega tus artes en <code>src/data/content.ts</code> (lista <code>BANNERS</code>).</p>
+      )}
+    </div>
+  </section>
+  <CtaBand />
+</Layout>

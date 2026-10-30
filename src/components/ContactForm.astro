@@ -1,0 +1,27 @@
+---
+const fields = [['nombre', 'Nombre', 'text', 'name'], ['correo', 'Correo electrónico', 'email', 'email'], ['asunto', 'Asunto', 'text', 'off']] as const;
+---
+<form id="lead" class="space-y-4 rounded-2xl bg-white p-6 text-ink shadow-sm ring-1 ring-slate-200">
+  {fields.map(([id, label, type, ac]) => (
+    <div>
+      <label for={id} class="block text-sm font-semibold">{label}</label>
+      <input id={id} name={id} type={type} autocomplete={ac} required class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-3" />
+    </div>
+  ))}
+  <div>
+    <label for="mensaje" class="block text-sm font-semibold">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="4" required class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-3"></textarea>
+  </div>
+  <button type="submit" class="btn-cta w-full">Contacta con nosotros</button>
+  <p class="text-xs text-slate-500">Al enviar se abrirá WhatsApp con su mensaje listo.</p>
+</form>
+<script>
+  import { SITE, wa } from '../config/site';
+  const form = document.getElementById('lead') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const msg = `Hola ${SITE.name}, soy ${d.get('nombre')} (${d.get('correo')}). Asunto: ${d.get('asunto')}. ${d.get('mensaje')}`;
+    window.open(wa(msg), '_blank', 'noopener');
+  });
+</script>

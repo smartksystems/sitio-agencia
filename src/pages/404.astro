@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { NAV } from '../config/site';
+---
+<Layout title="Página no encontrada | SMART K SYSTEMS" description="La página que buscas no existe o fue movida. Vuelve al inicio de SMART K SYSTEMS." noindex>
+  <PageHeader title="Página no encontrada" lead="El enlace que seguiste no existe o fue movido. Estas son las secciones disponibles:">
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/" class="btn-cta">Volver al inicio</a>
+      <a href="/contacto/" class="btn-ghost">Contacto</a>
+    </div>
+  </PageHeader>
+  <section class="py-16">
+    <ul class="container-x grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {NAV.map((n) => <li><a href={n.href} class="block rounded-xl border border-slate-200 px-5 py-4 font-semibold hover:border-brand hover:text-brand">{n.label}</a></li>)}
+    </ul>
+  </section>
+</Layout>
